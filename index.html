@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cipher Core — Keamanan Digital Enterprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- GRID BG -->
+  <div class="grid-bg"></div>
+
+  <!-- COMMAND PALETTE -->
+  <div class="cmd-overlay" id="cmdPalette">
+    <div class="cmd-palette">
+      <div class="cmd-input-wrap">
+        <span style="font-size:16px;color:var(--text-muted)">⌘</span>
+        <input class="cmd-input" id="cmdInput" placeholder="Cari halaman, aksi, atau pengaturan..." autocomplete="off">
+        <span class="cmd-item-key">ESC</span>
+      </div>
+      <div class="cmd-results" id="cmdResults"></div>
+      <div class="cmd-footer">
+        <span><kbd>↵</kbd> Buka</span>
+        <span><kbd>↑↓</kbd> Navigasi</span>
+        <span><kbd>ESC</kbd> Tutup</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ═══════════════════════════════════
+       LANDING PAGE
+  ═══════════════════════════════════ -->
+  <div id="landing" class="page active">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <a class="logo" onclick="showLanding()">
+        <img src="Logo.jpeg" alt="Logo Cipher Core" class="logo-icon">
+        <span>Cipher Core</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" onclick="scrollToSection('landing')">Home</a>
+        <a class="nav-link" onclick="scrollToSection('fitur-section')">Fitur</a>
+        <a class="nav-link" onclick="scrollToSection('solusi-section')">Solusi</a>
+        <a class="nav-link" onclick="scrollToSection('pricing-section')">Harga</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn-ghost" onclick="showLogin()">Masuk</button>
+        <button class="btn btn-primary" onclick="showApp()">Coba Gratis</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Platform Keamanan Digital Terpadu
+      </div>
+      <h1>Keamanan dan Operasional<br>Digital dalam <span>Satu Platform</span></h1>
+      <p class="hero-sub">Monitor, lindungi, dan kelola seluruh infrastruktur IT perusahaan Anda secara real-time dengan kecerdasan ancaman berbasis AI.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="showApp()" style="padding:12px 28px;font-size:15px">
+          🚀 Mulai Sekarang
+        </button>
+        <button class="btn btn-outline" onclick="showToast('Demo dijadwalkan','Kami akan menghubungi Anda dalam 24 jam.','✅')" style="padding:12px 28px;font-size:15px">
+          Request Demo
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num" data-target="99.9">0</div>
+          <div class="stat-label">% Uptime SLA</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="2847">0</div>
+          <div class="stat-label">Klien Enterprise</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="14">0</div>
+          <div class="stat-label">Juta Ancaman Diblokir</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-num" data-target="0.3">0</div>
+          <div class="stat-label">ms Respons Rata-rata</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="fitur-section">
+      <div class="section-label">Fitur Utama</div>
+      <h2 class="section-title">Semua yang Anda Butuhkan untuk Keamanan Enterprise</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div class="feature-title">Deteksi Ancaman Real-time</div>
+          <div class="feature-desc">AI-powered threat detection dengan analisis perilaku dan respons otomatis dalam milidetik.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Monitoring 24/7</div>
+          <div class="feature-desc">Dashboard operasional lengkap dengan visibilitas penuh ke seluruh infrastruktur IT Anda.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <div class="feature-title">Integrasi Fleksibel</div>
+          <div class="feature-desc">Koneksi mudah ke 200+ platform enterprise termasuk AWS, Azure, GCP, dan Salesforce.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔐</div>
+          <div class="feature-title">Zero Trust Architecture</div>
+          <div class="feature-desc">Implementasi model zero trust yang ketat dengan autentikasi multi-faktor di setiap akses.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📡</div>
+          <div class="feature-title">Peta Ancaman Global</div>
+          <div class="feature-desc">Visualisasi serangan siber secara live dari seluruh dunia dengan geolokasi akurat.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <div class="feature-title">Laporan Compliance</div>
+          <div class="feature-desc">Generate laporan audit otomatis untuk ISO 27001, SOC 2, PCI-DSS, dan regulasi lokal.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOLUSI SECTION -->
+    <section class="section" id="solusi-section" style="border-top: 1px solid var(--border); padding-top: 100px;">
+      <div class="section-label">Solusi Infrastruktur</div>
+      <h2 class="section-title">Proteksi Menyeluruh untuk Skala Bisnis Apapun</h2>
+      <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="feature-card">
+          <div class="feature-title" style="font-size: 18px; color: var(--cyan);">Untuk Startup & Mid-Market</div>
+          <p class="feature-desc" style="font-size: 14px; margin-top: 10px;">Implementasi cyber security instan tanpa perlu tim ahli yang besar. Monitor log, deteksi dini malware, dan amankan endpoint operasional dalam hitungan jam.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-title" style="font-size: 18px; color: var(--blue);">Untuk Global Enterprise</div>
+          <p class="feature-desc" style="font-size: 14px; margin-top: 10px;">Arsitektur pertahanan berlapis dengan integrasi SIEM/SOAR eksisting, dukungan kustomisasi compliance regulasi ketat, serta penanganan insiden prioritas dari tim SRE kami.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing-section" style="border-top: 1px solid var(--border); padding-top: 100px;">
+      <div class="section-label" style="text-align:center">Paket Harga</div>
+      <h2 class="section-title" style="text-align:center;margin:0 auto 48px">Pilih Paket Sesuai Kebutuhan</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">Paket 01</div>
+          <div class="pricing-name">Starter</div>
+          <div class="pricing-price">Rp 299K<span>/bulan</span></div>
+          <div class="pricing-desc">Ideal untuk bisnis kecil dan startup yang baru memulai keamanan digital.</div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span> Monitoring hingga 10 server</li>
+            <li><span class="check">✓</span> Deteksi ancaman dasar</li>
+            <li><span class="check">✓</span> Dashboard single-user</li>
+            <li><span class="check">✓</span> Laporan mingguan</li>
+            <li><span class="check">✓</span> Support email 9×5</li>
+            <li><span class="cross">—</span> Threat Intelligence Feed</li>
+            <li><span class="cross">—</span> API akses penuh</li>
+            <li><span class="cross">—</span> SLA 99.9%</li>
+          </ul>
+          <button class="btn btn-outline" style="width:100%" onclick="showToast('Starter dipilih','Silakan lengkapi pendaftaran Anda.','⚡')">Berlangganan Sekarang</button>
+        </div>
+
+        <div class="pricing-card popular">
+          <div class="popular-badge">Paling Populer</div>
+          <div class="pricing-tier">Paket 02</div>
+          <div class="pricing-name">Profesional</div>
+          <div class="pricing-price">Rp 899K<span>/bulan</span></div>
+          <div class="pricing-desc">Untuk tim IT mid-size yang membutuhkan proteksi komprehensif dan analitik lanjutan.</div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span> Monitoring hingga 50 server</li>
+            <li><span class="check">✓</span> AI Threat Detection</li>
+            <li><span class="check">✓</span> Multi-user (10 seat)</li>
+            <li><span class="check">✓</span> Laporan real-time</li>
+            <li><span class="check">✓</span> Support 24/7 chat</li>
+            <li><span class="check">✓</span> Threat Intelligence Feed</li>
+            <li><span class="check">✓</span> API akses penuh</li>
+            <li><span class="cross">—</span> Dedicated Account Manager</li>
+          </ul>
+          <button class="btn btn-primary" style="width:100%" onclick="showToast('Profesional dipilih','Selamat bergabung! Tim kami akan menghubungi Anda.','🎉')">Berlangganan Sekarang</button>
+        </div>
+
+        <div class="pricing-card">
+          <div class="pricing-tier">Paket 03</div>
+          <div class="pricing-name">Enterprise</div>
+          <div class="pricing-price" style="font-size:28px;padding-top:8px">Custom<span></span></div>
+          <div class="pricing-desc">Solusi penuh untuk korporasi besar dengan kebutuhan keamanan tingkat tertinggi.</div>
+          <ul class="feature-list">
+            <li><span class="check">✓</span> Server tidak terbatas</li>
+            <li><span class="check">✓</span> Advanced SOC Platform</li>
+            <li><span class="check">✓</span> Unlimited seat</li>
+            <li><span class="check">✓</span> Custom dashboard & branding</li>
+            <li><span class="check">✓</span> Dedicated SRE team</li>
+            <li><span class="check">✓</span> SLA 99.99% guaranteed</li>
+            <li><span class="check">✓</span> On-premise deployment</li>
+            <li><span class="check">✓</span> Dedicated Account Manager</li>
+          </ul>
+          <button class="btn btn-ghost" style="width:100%;color:var(--text-primary)" onclick="showToast('Tim sales kami akan menghubungi Anda','Hubungi: enterprise@ciphercore.id','📞')">Hubungi Sales</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       APP SHELL (DASHBOARD UTAMA)
+  ═══════════════════════════════════ -->
+  <div id="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-logo" onclick="showLanding()">
+        <img src="Logo.jpeg" alt="Logo Cipher Core" class="logo-icon">
+        <span>Cipher Core</span>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section">Utama</div>
+        <div class="nav-item active" onclick="switchTab('dashboard',this)">
+          <span class="nav-icon">📊</span> Dashboard
+        </div>
+        <div class="nav-item" onclick="switchTab('security',this)">
+          <span class="nav-icon">🛡️</span> Keamanan
+          <span class="nav-badge">3</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('threatmap',this)">
+          <span class="nav-icon">📡</span> Peta Ancaman
+        </div>
+        <div class="nav-section">Manajemen</div>
+        <div class="nav-item" onclick="switchTab('users',this)">
+          <span class="nav-icon">👥</span> Pengguna
+        </div>
+        <div class="nav-item" onclick="switchTab('integration',this)">
+          <span class="nav-icon">🔗</span> Integrasi
+        </div>
+        <div class="nav-section">Laporan</div>
+        <div class="nav-item" onclick="switchTab('analytics',this)">
+          <span class="nav-icon">📈</span> Analitik
+        </div>
+        <div class="nav-item" onclick="switchTab('audit',this)">
+          <span class="nav-icon">📋</span> Audit Trail
+        </div>
+        <div class="nav-section">Akun</div>
+        <div class="nav-item" onclick="switchTab('support',this)">
+          <span class="nav-icon">💬</span> Support
+        </div>
+        <div class="nav-item" onclick="showLanding()">
+          <span class="nav-icon">🏠</span> Keluar
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-card">
+          <div class="user-avatar">MMY</div>
+          <div class="user-info">
+            <div class="user-name">Muhammad Maulana Yusuf</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+          <span style="font-size:14px;color:var(--text-muted)">⚙️</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="page-title" id="topTitle">Dashboard</div>
+      <div class="search-bar" onclick="openCmd()">
+        <span style="color:var(--text-muted);font-size:14px">🔍</span>
+        <input placeholder="Cari…" readonly>
+        <span class="search-kbd">⌘K</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" onclick="showToast('3 ancaman baru terdeteksi','Periksa halaman Keamanan segera.','⚠️')">
+          🔔<span class="notif-dot"></span>
+        </button>
+        <button class="icon-btn" onclick="showToast('Sinkronisasi data...','Data diperbarui','🔄')">🔄</button>
+        <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;cursor:pointer">MMY</div>
+      </div>
+    </header>
+
+    <!-- MAIN MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- ── DASHBOARD TAB ── -->
+      <div id="tab-dashboard" class="tab-content">
+        <div class="page-header">
+          <div>
+            <h1>Dashboard</h1>
+            <div class="breadcrumb">Selamat datang kembali, <span>Muhammad Maulana Yusuf</span> — Senin, 19 Mei 2025</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-ghost">📥 Ekspor</button>
+            <button class="btn btn-primary" onclick="showToast('Laporan digenerate','Unduh siap dalam 30 detik.','📊')">+ Laporan Baru</button>
+          </div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card cyan">
+            <div class="kpi-label">Ancaman Diblokir</div>
+            <div class="kpi-value">1,247</div>
+            <div class="kpi-meta up">↑ 12% dari kemarin</div>
+          </div>
+          <div class="kpi-card green">
+            <div class="kpi-label">Server Online</div>
+            <div class="kpi-value">48 / 52</div>
+            <div class="kpi-meta">4 dalam pemeliharaan</div>
+          </div>
+          <div class="kpi-card blue">
+            <div class="kpi-label">Uptime Sistem</div>
+            <div class="kpi-value">99.97%</div>
+            <div class="kpi-meta up">↑ SLA terpenuhi</div>
+          </div>
+          <div class="kpi-card red">
+            <div class="kpi-label">Insiden Aktif</div>
+            <div class="kpi-value">3</div>
+            <div class="kpi-meta down">↑ 2 kritis</div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <!-- CHART -->
+          <div class="chart-card">
+            <div class="card-header">
+              <span class="card-title">Aktivitas Ancaman — 7 Hari Terakhir</span>
+              <div style="display:flex;gap:8px">
+                <span class="tag">Live</span>
+                <span class="card-meta">Diperbarui: 2 menit lalu</span>
+              </div>
+            </div>
+            <div class="chart-area" id="barChart"></div>
+            <div style="display:flex;justify-content:space-between;margin-top:8px;font-size:11px;color:var(--text-muted);font-family:var(--mono)">
+              <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span>
+            </div>
+          </div>
+
+          <!-- SERVERS -->
+          <div class="chart-card">
+            <div class="card-header">
+              <span class="card-title">Status Server</span>
+              <span class="badge badge-success">● 48 Online</span>
+            </div>
+            <div class="server-list">
+              <div class="server-item">
+                <span class="server-status online"></span>
+                <span class="server-name">prod-web-01</span>
+                <span class="server-ping">12ms</span>
+              </div>
+              <div class="server-item">
+                <span class="server-status online"></span>
+                <span class="server-name">prod-api-02</span>
+                <span class="server-ping">8ms</span>
+              </div>
+              <div class="server-item">
+                <span class="server-status warning"></span>
+                <span class="server-name">db-replica-03</span>
+                <span class="server-ping">340ms</span>
+              </div>
+              <div class="server-item">
+                <span class="server-status online"></span>
+                <span class="server-name">cache-redis-01</span>
+                <span class="server-ping">3ms</span>
+              </div>
+              <div class="server-item">
+                <span class="server-status offline"></span>
+                <span class="server-name">backup-storage-04</span>
+                <span class="server-ping">timeout</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resource Usage -->
+        <div class="chart-card" style="margin-bottom:24px">
+          <div class="card-header">
+            <span class="card-title">Penggunaan Resource Server</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+                <span style="color:var(--text-secondary)">CPU Usage</span>
+                <span style="font-family:var(--mono);font-weight:700">68%</span>
+              </div>
+              <div class="progress progress-cyan"><div class="progress-bar" style="width:68%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+                <span style="color:var(--text-secondary)">Memory RAM</span>
+                <span style="font-family:var(--mono);font-weight:700">82%</span>
+              </div>
+              <div class="progress progress-yellow"><div class="progress-bar" style="width:82%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+                <span style="color:var(--text-secondary)">Disk I/O</span>
+                <span style="font-family:var(--mono);font-weight:700">34%</span>
+              </div>
+              <div class="progress progress-green"><div class="progress-bar" style="width:34%"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px">
+                <span style="color:var(--text-secondary)">Bandwidth</span>
+                <span style="font-family:var(--mono);font-weight:700;color:var(--danger)">91%</span>
+              </div>
+              <div class="progress progress-red"><div class="progress-bar" style="width:91%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALERTS -->
+        <div class="card-title" style="margin-bottom:12px">Alert Ancaman Terbaru</div>
+        <div class="alerts-list">
+          <div class="alert-item critical">
+            <span class="alert-dot"></span>
+            <span class="alert-text">Percobaan brute force terdeteksi pada server <strong>prod-api-02</strong> dari IP 185.234.218.44</span>
+            <span class="alert-time">2m lalu</span>
+          </div>
+          <div class="alert-item warning">
+            <span class="alert-dot"></span>
+            <span class="alert-text">Latensi tinggi tidak normal pada <strong>db-replica-03</strong> — potensi DDoS</span>
+            <span class="alert-time">15m lalu</span>
+          </div>
+          <div class="alert-item info">
+            <span class="alert-dot"></span>
+            <span class="alert-text">Sertifikat SSL <strong>api.ciphercore.id</strong> akan kedaluwarsa dalam 14 hari</span>
+            <span class="alert-time">1j lalu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── SECURITY TAB ── -->
+      <div id="tab-security" class="tab-content" style="display:none">
+        <div class="page-header">
+          <div>
+            <h1>Monitoring Keamanan</h1>
+            <div class="breadcrumb">Security Operations Center</div>
+          </div>
+          <button class="btn btn-danger" onclick="showToast('Protokol darurat diaktifkan','Semua akses eksternal diblokir sementara.','🚨')">🚨 Respons Darurat</button>
+        </div>
+
+        <div class="risk-grid">
+          <div class="risk-card safe">
+            <div class="risk-icon">✅</div>
+            <div class="risk-level">AMAN</div>
+            <div class="risk-count">1,891</div>
+          </div>
+          <div class="risk-card warn">
+            <div class="risk-icon">⚠️</div>
+            <div class="risk-level">WASPADA</div>
+            <div class="risk-count">47</div>
+          </div>
+          <div class="risk-card crit">
+            <div class="risk-icon">🚨</div>
+            <div class="risk-level">KRITIS</div>
+            <div class="risk-count">3</div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="card-header">
+            <span class="card-title">Log Aktivitas Mencurigakan</span>
+          </div>
+          <div class="table-container" style="border:none;border-radius:0">
+            <table class="data-table" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Waktu</th><th>Sumber IP</th><th>Tipe Serangan</th><th>Target</th><th>Severity</th><th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-family:var(--mono);font-size:12px">14:32:11</td>
+                  <td style="font-family:var(--mono);color:var(--danger)">185.234.218.44</td>
+                  <td>Brute Force SSH</td>
+                  <td>prod-api-02</td>
+                  <td><span class="badge badge-danger">Kritis</span></td>
+                  <td><span class="badge badge-warning">Investigasi</span></td>
+                </tr>
+                <tr>
+                  <td style="font-family:var(--mono);font-size:12px">14:18:05</td>
+                  <td style="font-family:var(--mono);color:var(--warning)">91.108.4.82</td>
+                  <td>SQL Injection</td>
+                  <td>api.ciphercore.id</td>
+                  <td><span class="badge badge-warning">Tinggi</span></td>
+                  <td><span class="badge badge-success">Diblokir</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── THREAT MAP TAB ── -->
+      <div id="tab-threatmap" class="tab-content" style="display:none">
+        <div class="page-header">
+          <div>
+            <h1>Peta Ancaman Global</h1>
+            <div class="breadcrumb">Visualisasi serangan siber secara real-time</div>
+          </div>
+          <span class="badge badge-danger" style="font-size:13px;padding:6px 14px">● Live</span>
+        </div>
+        <div class="threat-map" style="height:400px;position:relative;overflow:hidden">
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 900 400" style="width:100%;height:100%;opacity:.6">
+              <rect width="900" height="400" fill="rgba(0,10,30,.8)"/>
+              <path d="M 80 80 Q 120 60 180 75 L 220 100 Z" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.2)"/>
+              <path d="M 260 60 Q 340 40 450 55 L 520 80 Z" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.2)"/>
+            </svg>
+          </div>
+          <div class="map-pulse" style="left:20%;top:55%"></div>
+          <div class="map-pulse cyan" style="left:73%;top:38%"></div>
+        </div>
+        <div class="chart-card" style="margin-top:20px">
+          <div class="card-header"><span class="card-title">Feed Serangan Real-time</span></div>
+          <div id="threatFeed" style="display:flex;flex-direction:column;gap:6px;max-height:280px;overflow-y:auto"></div>
+        </div>
+      </div>
+
+      <!-- ── USERS TAB ── -->
+      <div id="tab-users" class="tab-content" style="display:none">
+        <div class="page-header">
+          <div>
+            <h1>Manajemen Pengguna</h1>
+            <div class="breadcrumb">Kelola akses dan hak pengguna sistem</div>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="data-table" style="width:100%">
+            <thead><tr><th style="padding-left:20px">Pengguna</th><th>Role</th><th>Departemen</th><th>Status</th><th>Aksi</th></tr></thead>
+            <tbody id="userTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── INTEGRATION TAB ── -->
+      <div id="tab-integration" class="tab-content" style="display:none">
+        <div class="page-header">
+          <div>
+            <h1>Integrasi Sistem</h1>
+            <div class="breadcrumb">Kelola koneksi layanan dan API pihak ketiga</div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div style="position:relative;height:300px;">
+            <div class="integration-node center" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)">Cipher Core Engine</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ANALYTICS TAB ── -->
+      <div id="tab-analytics" class="tab-content" style="display:none">
+        <div class="page-header">
+          <div>
+            <h1>Analitik & Laporan</h1>
+            <div class="breadcrumb">Tren keamanan dan performa operasional IT</div>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-area" id="analyticsChart" style="height:200px;"></div>
+        </div>
+      </div>
+
+      <!-- ── AUDIT TRAIL TAB ── -->
+      <div id="tab-audit" class="tab-content" style="display:none">
+        <div class="page-header">
+          <div>
+            <h1>Audit Trail</h1>
+            <div class="breadcrumb">Riwayat perubahan konfigurasi untuk compliance</div>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="data-table">
+            <thead><tr><th>Timestamp</th><th>Pengguna</th><th>Aksi</th><th>Hasil</th></tr></thead>
+            <tbody>
+              <tr><td>2025-05-19 14:32:08</td><td>Muhammad Maulana Yusuf</td><td>UPDATE Firewall Rule #48</td><td><span class="badge badge-success">Berhasil</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── SUPPORT TAB ── -->
+      <div id="tab-support" class="tab-content" style="display:none">
+        <div class="page-header">
+          <div>
+            <h1>Support & Dokumentasi Bantuan</h1>
+            <div class="breadcrumb">Pusat panduan dan dokumen teknis terintegrasi</div>
+          </div>
+        </div>
+        <div class="support-search">
+          <h2 style="font-size:22px;margin-bottom:12px">Dokumentasi & API Reference</h2>
+          <div class="search-input-lg">
+            <input placeholder="Cari kode error, SDK tutorial, setup TLS...">
+            <button class="btn btn-primary">Cari</button>
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-header">Bagaimana cara mengaktifkan autentikasi dua faktor (2FA)? <span class="faq-chevron">▼</span></div>
+          <div class="faq-body">Masuk ke menu Pengaturan Akun → Keamanan → Aktifkan 2FA menggunakan Google Authenticator.</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       LOGIN & AUTH PAGE
+  ═══════════════════════════════════ -->
+  <div id="login-page">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="Logo.jpeg" alt="Logo Cipher Core" class="logo-icon">
+        <span>Cipher Core</span>
+      </div>
+      
+      <!-- FORM LOGIN UTAMA -->
+      <div id="loginForm">
+        <div class="login-title">Selamat Datang Kembali</div>
+        <div class="login-sub">Masuk langsung ke dashboard keamanan enterprise Anda</div>
+        <div class="form-group">
+          <label class="form-label">Email Perusahaan</label>
+          <input type="email" class="form-input" placeholder="maulana@ciphercore.id" id="loginEmail" value="maulana@ciphercore.id">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" placeholder="••••••••" id="loginPassword" value="password123">
+        </div>
+        <button class="btn btn-primary" style="display:block;width:100%;padding:12px;font-size:15px;margin:8px auto 0;" onclick="doLogin()">Masuk ke Dashboard</button>
+        <div class="divider">atau verifikasi manual</div>
+        <button class="btn btn-ghost" style="width:100%;justify-content:center" onclick="goTo2FAFallback()">🛡️ Gunakan Verifikasi 2FA</button>
+      </div>
+
+      <!-- FORM OTP / 2FA INDEPENDEN (DI-RAPIHKAN) -->
+      <div id="otpForm" class="otp-section">
+        <div class="login-title" style="font-size:18px">Verifikasi Keamanan 2FA</div>
+        <div class="login-sub">Masukkan 6 digit kode dari aplikasi Google Authenticator Anda</div>
+        
+        <div class="otp-container">
+          <input type="text" class="otp-box" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+          <input type="text" class="otp-box" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+          <input type="text" class="otp-box" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+          <span class="otp-divider-dash">-</span>
+          <input type="text" class="otp-box" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+          <input type="text" class="otp-box" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+          <input type="text" class="otp-box" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+        </div>
+
+        <button class="btn btn-primary" style="display:block;width:100%;margin:24px 0 0;padding:12px 0;font-size:15px;" onclick="doOTP()">Verifikasi Kode</button>
+        <div style="text-align:center;margin-top:16px;font-size:12px;color:var(--text-muted)">
+          Kendala verifikasi? <span style="color:var(--cyan);cursor:pointer" onclick="resetLoginView()">Kembali</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE CHAT WIDGET -->
+  <div class="chat-widget">
+    <button class="chat-btn" onclick="showToast('Live Chat','Tim support kami online.','💬')">💬</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
